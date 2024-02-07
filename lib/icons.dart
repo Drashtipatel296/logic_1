@@ -64,7 +64,7 @@ class _IconScreenState extends State<IconScreen> {
                     children: [
                       custom(const Icon(Icons.phone_rounded,size: 35,),),
                       custom(const Icon(Icons.search,size: 35,),),
-                      custom(const Icon(Icons.search,size: 35,),),
+                      custom(const Icon(Icons.add_a_photo_outlined,size: 35,),),
                       custom(const Icon(Icons.square,size: 35,),),
                       custom(const Icon(Icons.play_arrow,size: 35,),),
                     ],

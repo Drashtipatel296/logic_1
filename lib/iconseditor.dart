@@ -9,375 +9,223 @@ class IconsEditor extends StatefulWidget {
 
 class _IconsEditorState extends State<IconsEditor> {
 
-  int selectedColor = 0;
-  int selectedIcon = 0;
+  List<Color> colors = [
+    Colors.red,
+    Colors.green,
+    Colors.blue,
+    Colors.yellow,
+    Colors.purple,
+    Colors.cyan,
+    Colors.orange,
+    Colors.deepOrange,
+    Colors.brown,
+    Colors.amber,
+
+  ];
+
+  List<IconData> icons = [
+    Icons.add,
+    Icons.access_alarm,
+    Icons.search,
+    Icons.android,
+    Icons.add_call,
+    Icons.add_circle,
+    Icons.arrow_back_ios_new,
+    Icons.arrow_forward_ios_outlined,
+    Icons.security,
+    Icons.accessibility_new,
+  ];
+
+  int selectedColorIndex = 0;
+  int selectedIconIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SafeArea(
-        child: Scaffold(
-          backgroundColor:  Colors.white,
-          appBar: AppBar(
-            elevation: 5,
-            shadowColor: Colors.black,
-            title: const Text(
-              'Icons Editor',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 25,
+      home: Scaffold(
+        backgroundColor: Color(0xFFEFF1F3),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          title: Text('Icons Editor'),
+          centerTitle: true,
+          elevation: 5,
+          shadowColor: Colors.black,
+        ),
+        body: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 20),
+              height: 280,
+              width: 390,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 2,
+                      spreadRadius: 0.01,
+                    ),
+                  ]
+              ),
+              child: Container(
+                margin: EdgeInsets.only(top: 20),
+                child: Icon(
+                  icons[selectedIconIndex],
+                  size: 100,
+                  color: colors[selectedColorIndex],
+                ),
               ),
             ),
-            centerTitle: true,
-          ),
-          body: Column(
-            children: [
-              Row(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.all(15),
-                    height: 300,
-                    width: 380,
-                    decoration: BoxDecoration(
-                      color: const Color(0xffFAFAFA),
-                      borderRadius: BorderRadius.circular(25),
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 5,
-                          spreadRadius: 5,
-                          color: Colors.grey.shade300,
-                        ),
-                      ],
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 16,horizontal: 131),
+              height: 60,
+              width: 390,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 2,
+                      spreadRadius: 0.01,
                     ),
-                    child: const Icon(
-                      Icons.arrow_back_ios_new,
-                      size: 90,
-                      color: Colors.blue,
-                    ),
-                  ),
-                ],
+                  ]
               ),
-              const SizedBox(
-                height: 0,
+              child: Text('Select Color',style: TextStyle(
+                color: Colors.black54,
+                fontSize: 23,
+                fontWeight: FontWeight.w500,
+              ),),
+            ),
+
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 20),
+              height: 120,
+              width: 390,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 2,
+                      spreadRadius: 0.01,
+                    ),
+                  ]
               ),
-              Row(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(top: 3,left: 15),
-                    height: 70,
-                    width: 380,
-                    decoration: BoxDecoration(
-                      color: const Color(0xffFAFAFA),
-                      borderRadius: BorderRadius.circular(20),
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 5,
-                          spreadRadius: 5,
-                          color: Colors.grey.shade300,
-                        ),
-                      ],
-                    ),
-                    alignment: Alignment.center,
-                    child: const Text(
-                      'Select Color',
-                      style: TextStyle(
-                          fontSize: 25,
-                          color: Color(0xff616161),
-                          fontWeight: FontWeight.w500),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(top: 20,left: 15),
-                    height: 100,
-                    width: 380,
-                    decoration: BoxDecoration(
-                      color: const Color(0xffFAFAFA),
-                      borderRadius: BorderRadius.circular(20),
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 5,
-                          spreadRadius: 5,
-                          color: Colors.grey.shade300,
-                        ),
-                      ],
-                    ),
-                    padding: const EdgeInsets.only(left: 10),
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: InkWell(
-                        onTap: () {
-                          setState(() {
-                            selectedColor == 1;
-                          });
-                        },
-                        child: Row(
-                          children: [
-                            Container(
-                              height: 80,
-                              width: 80,
-                              decoration: const BoxDecoration(
-                                color: Color(0xffCBCBCB),
-                                shape: BoxShape.circle,
-                              ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(left: 10),
-                              height: 80,
-                              width: 80,
-                              decoration: const BoxDecoration(
-                                color: Color(0xffD8CCE1),
-                                shape: BoxShape.circle,
-                              ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(left: 10),
-                              height: 80,
-                              width: 80,
-                              decoration: BoxDecoration(
-                                color: Colors.yellowAccent,
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(left: 10),
-                              height: 80,
-                              width: 80,
-                              decoration: BoxDecoration(
-                                color: const Color(0xff2196F3),
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(left: 10),
-                              height: 80,
-                              width: 80,
-                              decoration: BoxDecoration(
-                                color: Colors.blueAccent,
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(left: 10),
-                              height: 80,
-                              width: 80,
-                              decoration: BoxDecoration(
-                                color: const Color(0xff3F51B5),
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(left: 10),
-                              height: 80,
-                              width: 80,
-                              decoration: const BoxDecoration(
-                                color: Color(0xffD8CCE1),
-                                shape: BoxShape.circle,
-                              ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(left: 10),
-                              height: 80,
-                              width: 80,
-                              decoration: const BoxDecoration(
-                                color: Color(0xffCBCBCB),
-                                shape: BoxShape.circle,
-                              ),
-                            ),
-                          ],
+              child: Container(
+                margin: EdgeInsets.symmetric(vertical: 5),
+                height: 100,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: colors.length,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedColorIndex = index;
+                        });
+                      },
+                      child: Container(
+                        width: 90,
+                        height: 80,
+                        margin: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: colors[index],
+                          borderRadius: BorderRadius.circular(16),
+                          border: selectedColorIndex == index
+                              ? Border.all(color: Colors.black26, width: 2)
+                              : null,
                         ),
                       ),
-                    ),
-                  ),
-                ],
+                    );
+                  },
+                ),
               ),
-              Row(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(top: 15,left: 15),
-                    height: 70,
-                    width: 380,
-                    decoration: BoxDecoration(
-                      color: const Color(0xffFAFAFA),
-                      borderRadius: BorderRadius.circular(20),
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 5,
-                          spreadRadius: 5,
-                          color: Colors.grey.shade300,
-                        ),
-                      ],
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 16,horizontal: 130),
+              height: 60,
+              width: 390,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 2,
+                      spreadRadius: 0.01,
                     ),
-                    alignment: Alignment.center,
-                    child: const Text(
-                      'Select Icon',
-                      style: TextStyle(
-                          fontSize: 25,
-                          color: Color(0xff616161),
-                          fontWeight: FontWeight.w500),
-                    ),
-                  ),
-                ],
+                  ]
               ),
-              Row(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(top: 20,left: 15),
-                    height: 100,
-                    width: 380,
-                    decoration: BoxDecoration(
-                      color: const Color(0xffFAFAFA),
-                      borderRadius: BorderRadius.circular(20),
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 5,
-                          spreadRadius: 5,
-                          color: Colors.grey.shade300,
-                        ),
-                      ],
+              child: Text('Select Icon',style: TextStyle(
+                color: Colors.black54,
+                fontSize: 23,
+                fontWeight: FontWeight.w500,
+              ),),
+            ),
+
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 20,horizontal: 10),
+              height: 120,
+              width: 390,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 2,
+                      spreadRadius: 0.01,
                     ),
-                    padding: const EdgeInsets.only(left: 12),
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: InkWell(
-                        onTap: () {
-                          setState(() {
-                            selectedIcon == 1;
-                          });
-                        },
-                        child: Row(
-                          children: [
-                            Container(
-                              height: 80,
-                              width: 80,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(15),
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 3,
-                                    spreadRadius: 2,
-                                    color: Colors.grey.shade300,
-                                  ),
-                                ],
-                              ),
-                              child: const Icon(Icons.add,size: 40,color: Colors.blueAccent,),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(left: 10),
-                              height: 80,
-                              width: 80,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(15),
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 3,
-                                    spreadRadius: 2,
-                                    color: Colors.grey.shade300,
-                                  ),
-                                ],
-                              ),
-                                child: const Icon(Icons.album,size: 40,color: Colors.blueAccent,)
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(left: 10),
-                              height: 80,
-                              width: 80,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(15),
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 3,
-                                    spreadRadius: 2,
-                                    color: Colors.grey.shade300,
-                                  ),
-                                ],
-                              ),
-                                child: const Icon(Icons.arrow_back_ios_new,size: 40,color: Colors.blueAccent,)
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(left: 10),
-                              height: 80,
-                              width: 80,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(15),
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 3,
-                                    spreadRadius: 2,
-                                    color: Colors.grey.shade300,
-                                  ),
-                                ],
-                              ),
-                                child: const Icon(Icons.arrow_forward_ios,size: 40,color: Colors.blueAccent,)
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(left: 10),
-                              height: 80,
-                              width: 80,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(15),
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 3,
-                                    spreadRadius: 2,
-                                    color: Colors.grey.shade300,
-                                  ),
-                                ],
-                              ),
-                                child: const Icon(Icons.alarm,size: 40,color: Colors.blueAccent,)
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(left: 10),
-                              height: 80,
-                              width: 80,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(15),
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 3,
-                                    spreadRadius: 2,
-                                    color: Colors.grey.shade300,
-                                  ),
-                                ],
-                              ),
-                                child: const Icon(Icons.phone_rounded,size: 40,color: Colors.blueAccent,)
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(left: 10),
-                              height: 80,
-                              width: 80,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(15),
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 3,
-                                    spreadRadius: 2,
-                                    color: Colors.grey.shade300,
-                                  ),
-                                ],
-                              ),
-                                child: const Icon(Icons.search,size: 40,color: Colors.blueAccent,)
-                            ),
+                  ]
+              ),
+
+              child: Container(
+                margin: EdgeInsets.symmetric(vertical: 10),
+                height: 100,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: icons.length,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedIconIndex = index;
+                        });
+                      },
+                      child: Container(
+                        width: 80,
+                        height: 80,
+                        margin: EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black12,
+                              spreadRadius: 0.01,
+                              blurRadius: 2,
+                            )
                           ],
+                          borderRadius: BorderRadius.circular(16),
+                          border: selectedIconIndex == index
+                              ? Border.all(color: Colors.black12, width: 2)
+                              : null,
+                        ),
+                        child: Icon(
+                          icons[index],
+                          size: 40,
+                          color: colors[selectedColorIndex],
                         ),
                       ),
-                    ),
-                  ),
-                ],
+                    );
+                  },
+                ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
